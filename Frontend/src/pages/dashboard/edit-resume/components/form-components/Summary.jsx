@@ -64,26 +64,43 @@ function Summary({ resumeInfo, enanbledNext, enanbledPrev }) {
   };
 
   const GenerateSummeryFromAI = async () => {
-    setLoading(true);
-    console.log("Generate Summery From AI for", resumeInfo?.jobTitle);
-    if (!resumeInfo?.jobTitle) {
-      toast("Please Add Job Title");
-      setLoading(false);
-      return;
+  setLoading(true);
+
+  if (!resumeInfo?.jobTitle) {
+    toast("Please Add Job Title");
+    setLoading(false);
+    return;
+  }
+
+  const PROMPT = prompt.replace("{jobTitle}", resumeInfo.jobTitle);
+
+  try {
+    const result = await AIChatSession.sendMessage(PROMPT);
+
+    // ✅ correct extraction
+    const text =
+      result?.candidates?.[0]?.content?.parts?.[0]?.text;
+
+    if (!text) {
+      throw new Error("AI returned empty response");
     }
-    const PROMPT = prompt.replace("{jobTitle}", resumeInfo?.jobTitle);
-    try {
-      const result = await AIChatSession.sendMessage(PROMPT);
-      console.log(JSON.parse(result.response.text()));
-      setAiGenerateSummeryList(JSON.parse(result.response.text()));
-      toast("Summery Generated", "success");
-    } catch (error) {
-      console.log(error);
-      toast("${error.message}", `${error.message}`);
-    } finally {
-      setLoading(false);
-    }
-  };
+
+    // Gemini returns string → parse JSON
+    const parsed = JSON.parse(text);
+
+    setAiGenerateSummeryList(parsed);
+    toast("Summary Generated", "success");
+
+  } catch (error) {
+    console.error(error);
+    toast(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+
 
   return (
     <div>
@@ -145,3 +162,4 @@ function Summary({ resumeInfo, enanbledNext, enanbledPrev }) {
 }
 
 export default Summary;
+//console.log(JSON.parse(result.response.text()));

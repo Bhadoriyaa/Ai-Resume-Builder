@@ -14,8 +14,8 @@ function HomePage() {
   const dispatch = useDispatch();
   const handleClick = () => {
     window.open(
-      "https://github.com/sahidrajaansari/Ai-Resume-Builder",
-      "_blank"
+      
+      "https://github.com/Bhadoriyaa"
     );
   };
 
