@@ -149,15 +149,7 @@ Now, you can **choose** to set up the project **with or without Docker**.
 
 ![AI Suggestions](./Screenshot/AI%20Suggestions.png)  
 
-### 5. 🔍 Live Preview  
-- See real-time resume updates  
 
-![Live Preview](./Screenshot/Screenshot%202024-07-08%20233753.png)  
-
-### 6. 📄 Export Options  
-- Download resumes in **PDF format**  
-
-![Download & Share](./Screenshot/downloadShare.png)  
 
 ---
 
@@ -216,8 +208,8 @@ The maintainers will review your PR. Once approved, it will be merged into the m
 
 ## Developers 👨‍💻👩‍💻
 
-- [@Sahid Raja Ansari](https://www.linkedin.com/in/sahidrajaansari/)
-- [@Shaharyar Alam](https://www.linkedin.com/in/shaharyar-alam-305322208/)
+- [@bhadoriyaharvansh2003@gmail.com [https://www.linkedin.com/in/harvanshbhadoriya/])
+
 
 ---
  Ai-Resume-Builder
